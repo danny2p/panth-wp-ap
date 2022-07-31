@@ -11,7 +11,7 @@ jobs:
     - uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
-        known_hosts: drush.in
+        known_hosts: *.drush.in
         #config: ${{ secrets.SSH_CONFIG }}
 
     # Install Terminus.
