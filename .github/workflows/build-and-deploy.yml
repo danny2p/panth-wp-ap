@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GITHUB_CONTEXT: ${{ toJson(github) }}
+      pantheon_repo
     steps:
     - uses: actions/checkout@v1
     - name: Install SSH Key
