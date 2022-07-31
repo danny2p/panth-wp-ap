@@ -16,7 +16,7 @@ jobs:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
         name: id_rsa
         known_hosts: drush.in
-        if_key_exists: ignore
+        if_key_exists: replace
         #config: ${{ secrets.SSH_CONFIG }}
 
     # Install Terminus.
@@ -56,7 +56,7 @@ jobs:
 
     - name: deployer
       env:
-        pantheon_repo: 'ssh://codeserver.dev.b5122a14-30ce-45a2-9026-2b2c739d61ef@codeserver.dev.b5122a14-30ce-45a2-9026-2b2c739d61ef.drush.in:2222/~/repository.git'
+        pantheon_repo: '${{ secrets.PANTHEON_REPO }}'
       run: |
         git remote add pantheon $pantheon_repo
         git config user.mail "danny.pfeiffer@pantheon.io"
