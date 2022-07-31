@@ -11,7 +11,7 @@ jobs:
     - uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
-        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+        known_hosts: drush.in
         #config: ${{ secrets.SSH_CONFIG }}
 
     # Install Terminus.
@@ -22,6 +22,7 @@ jobs:
 
     - name: Install Terminus Build Tools
       run: terminus self:plugin:install terminus-build-tools-plugin
+      # terminus build tools plugin enables our .gitignore cutline handling
 
     # Check Terminus works.
     - name: Update Ignore File.
