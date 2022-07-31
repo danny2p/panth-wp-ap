@@ -6,7 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - uses: shimataro/ssh-key-action@v2
@@ -45,8 +44,9 @@ jobs:
     - name: node builder
       run: |
         npm install
-        npm run out
-        gulp build
+# whatver frontend build steps you need here
+#        npm run out
+#        gulp build
 
     - name: deployer
       env:
