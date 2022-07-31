@@ -6,8 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      pantheon_repo
     steps:
     - uses: actions/checkout@v1
     - name: Install SSH Key
