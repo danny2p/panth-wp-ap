@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: shimataro/ssh-key-action@v2
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
-        known_hosts: '*.drush.in'
+        name: id_rsa
+        known_hosts: drush.in
+        if_key_exists: replace
         #config: ${{ secrets.SSH_CONFIG }}
 
     # Install Terminus.
