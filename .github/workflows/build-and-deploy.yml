@@ -9,9 +9,9 @@ jobs:
     env:
       GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install SSH Key
-      uses: shimataro/ssh-key-action@v2
+      uses: shimataro/ssh-key-action@v2.0.3
       with:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
         name: id_rsa
@@ -56,7 +56,7 @@ jobs:
 
     - name: deployer
       env:
-        pantheon_repo: '${{ secrets.PANTHEON_REPO }}'
+        pantheon_repo: 'ssh://codeserver.dev.b5122a14-30ce-45a2-9026-2b2c739d61ef@codeserver.dev.b5122a14-30ce-45a2-9026-2b2c739d61ef.drush.in:2222/~/repository.git'
       run: |
         git remote add pantheon $pantheon_repo
         git config user.mail "danny.pfeiffer@pantheon.io"
