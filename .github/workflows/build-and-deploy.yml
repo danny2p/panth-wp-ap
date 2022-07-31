@@ -9,13 +9,13 @@ jobs:
     env:
       GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2.0.3
       with:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
         name: id_rsa
-        known_hosts: drush.in
+        known_hosts: 
         if_key_exists: replace
         #config: ${{ secrets.SSH_CONFIG }}
 
@@ -47,9 +47,9 @@ jobs:
         path: ./vendor
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/composer.lock') }}
 
-    - name: node builder
-      run: |
-        npm install
+#    - name: node builder
+#      run: |
+#        npm install
 # whatver frontend build steps you need here
 #        npm run out
 #        gulp build
@@ -59,8 +59,9 @@ jobs:
         pantheon_repo: '${{ secrets.PANTHEON_REPO }}'
       run: |
         git remote add pantheon $pantheon_repo
-        git config user.mail "danny.pfeiffer@pantheon.io"
-        git config user.name "Github Action"
-        git add .
-        git commit -q -m 'Build assets for dev.'
-        git push --force pantheon HEAD:fe-build
+#        git config user.mail "danny.pfeiffer@pantheon.io"
+#        git config user.name "Github Action"
+#        git add .
+#        git commit -q -m 'Build assets for dev.'
+#        git push --force pantheon HEAD:fe-build
+         git push pantheon HEAD:fe-build
