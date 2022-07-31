@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
     steps:
     - uses: actions/checkout@v1
     - name: Install SSH Key
@@ -14,7 +16,7 @@ jobs:
         key: ${{ secrets.PANTHEON_SSH_KEY }}
         name: id_rsa
         known_hosts: drush.in
-        if_key_exists: replace
+        if_key_exists: ignore
         #config: ${{ secrets.SSH_CONFIG }}
 
     # Install Terminus.
